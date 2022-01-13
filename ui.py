@@ -1,5 +1,7 @@
 import tkinter
 
+from click import command
+
 class Ui:
     def __init__(self, episode:str):
         row = column = 0
@@ -27,13 +29,23 @@ class Ui:
                 number_button = tkinter.Button()
                 self.number_buttons.append(number_button)
 
-                number_button.config(text=character, font=("Arial", 9, "bold"), bg="gray", command=None)
+
+                number_button.config(text=character, font=("Arial", 9, "bold"), bg="gray")
                 number_button.grid(row=row, column=column)
             else:
                 character_label = tkinter.Label()
                 character_label.config(text=character, font=("Arial", 9, "bold"))
                 character_label.grid(row=row, column=column)
             column += 1
+
+        for i, btn in enumerate(self.number_buttons):
+            def action(index=i):
+                def color_toggle():
+                    self.number_buttons[index].config(bg="green")
+                return color_toggle
+
+            self.number_buttons[i].config(command=action(i))
+
 
         # keep UI active
         self.window.mainloop()
