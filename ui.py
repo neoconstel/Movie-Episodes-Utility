@@ -31,11 +31,11 @@ class Ui:
                 self.number_buttons.append(number_button)
 
 
-                number_button.config(text=character, font=("Arial", 9, "bold"), bg=unselected_color)
+                number_button.config(text=character, font=("Arial", 9, "bold"), bg=unselected_color, fg="cyan")
                 number_button.grid(row=row, column=column)
             else:
                 character_label = tkinter.Label()
-                character_label.config(text=character, font=("Arial", 9, "bold"))
+                character_label.config(text=character, font=("Arial", 9, "bold"), fg="magenta")
                 character_label.grid(row=row, column=column)
             column += 1
         row += 1
