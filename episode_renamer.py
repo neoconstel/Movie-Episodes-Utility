@@ -18,8 +18,11 @@ def get_episode_positions():
             else:
                 return None
 
+
 # print(get_episode_positions())
 # exit()
+
+gui = Ui()
         
 
 episodes = [
