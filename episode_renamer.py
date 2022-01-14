@@ -3,27 +3,23 @@ import re
 
 from ui import Ui
 
+# only for console. not needed with GUI present.
+# def get_episode_positions():
+#     positions = []
+#     while True:
+#         position = (input("Enter next episode position (counting from 1): "))
+#         if position.isdigit():
+#             positions.append(int(position))
+#         elif position:
+#             print("Enter only digits!")
+#             return None
+#         else:
+#             if positions:
+#                 return positions
+#             else:
+#                 return None        
 
-def get_episode_positions():
-    positions = []
-    while True:
-        position = (input("Enter next episode position (counting from 1): "))
-        if position.isdigit():
-            positions.append(int(position))
-        elif position:
-            print("Enter only digits!")
-            return None
-        else:
-            if positions:
-                return positions
-            else:
-                return None
-
-
-# print(get_episode_positions())
-# exit()
-        
-
+# get all the filenames and remove the extension to give something like this
 episodes = [
     "fairytale 0101",
     "fairytale 0102",
@@ -70,3 +66,4 @@ for pattern in patterns:
             pattern_positions.append(pattern_position)
             print(f"Pattern positions: {pattern_positions}")
             break
+        
