@@ -33,7 +33,7 @@ print("\n\npatterns:")
 for pattern in patterns:
     print(pattern)
 
-pattern_positions = []
+all_pattern_positions = []
 
 print("\n\nsample_matches:")
 for pattern in patterns:
@@ -41,12 +41,11 @@ for pattern in patterns:
         match = re.match(pattern, episode)
         if match:
             print(f"Sample: {match.group()},  Numbers: {match.groups()}")
-            # pattern_position = get_episode_positions()
-            pattern_position = []
-            gui = EpisodeParseUi(episode, gui_output=pattern_position)
+            pattern_positions = []
+            gui = EpisodeParseUi(episode, gui_output=pattern_positions)
             # the ui blocks the code at this point until it is destroyed
             
-            pattern_positions.append(pattern_position)
-            print(f"Pattern positions: {pattern_positions}")
+            all_pattern_positions.append(pattern_positions)
+            print(f"All pattern positions: {all_pattern_positions}")
             break
         

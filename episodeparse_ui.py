@@ -95,7 +95,4 @@ class EpisodeParseUi:
 
         # close the ui
         self.window.destroy()
-
-
-# if __name__ == "__main__":
-#     gui = Ui("Fairytale S05 Ep 14")
+        
