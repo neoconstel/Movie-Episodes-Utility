@@ -26,7 +26,8 @@ for pattern, pattern_positions in result:
             for position in pattern_positions:
                 new_title += match.group(position + 1)
 
-            renamed_episodes.append(new_title)
+            if new_title not in renamed_episodes:
+                renamed_episodes.append(new_title)
             print(new_title)
     print(f"Pattern: {pattern},  Positions: {pattern_positions}")
 
@@ -34,3 +35,10 @@ for pattern, pattern_positions in result:
 print("\n\nRenamed episodes:")
 for each in renamed_episodes:
     print(each)
+
+print(f"\nNumber of original episodes: {len(episodes)}")
+print(f"Number of renamed episodes: {len(renamed_episodes)}")
+if len(episodes) != len(renamed_episodes):
+    print("Renaming conflicts present. Abort renaming process.")
+else:
+    print("No renaming conflicts. Renaming can safely proceed")
