@@ -4,7 +4,6 @@ UNSELECTED_COLOR = "grey"
 SELECTED_COLOR = "green"
 
 
-
 class Ui:
     output_positions = None
 
@@ -21,7 +20,9 @@ class Ui:
         self.window.config(padx=30, pady=30)
 
         info_label = tkinter.Label()
-        info_label.config(text="Select ONLY the buttons containing the episodes", font=("Arial", 9, "bold"))
+        info_label.config(
+            text="Select ONLY the buttons containing the episodes", 
+            font=("Arial", 9, "bold"))
         info_label.grid(row=row, column=column, columnspan=len(episode))
         row += 1
 
@@ -38,11 +39,15 @@ class Ui:
                 self.number_buttons.append(number_button)
 
 
-                number_button.config(text=character, font=("Arial", 9, "bold"), bg=UNSELECTED_COLOR, fg="cyan")
+                number_button.config(
+                    text=character, font=("Arial", 9, "bold"), 
+                    bg=UNSELECTED_COLOR, fg="cyan")
                 number_button.grid(row=row, column=column)
             else:
                 character_label = tkinter.Label()
-                character_label.config(text=character, font=("Arial", 9, "bold"), fg="magenta")
+                character_label.config(
+                    text=character, font=("Arial", 9, "bold"), 
+                    fg="magenta")
                 character_label.grid(row=row, column=column)
             column += 1
         row += 1
@@ -54,7 +59,9 @@ class Ui:
         row += 1
 
         confirm_button = tkinter.Button()
-        confirm_button.config(text="Confirm", font=("Arial", 9, "bold"), bg=UNSELECTED_COLOR)
+        confirm_button.config(
+            text="Confirm", font=("Arial", 9, "bold"), 
+            bg=UNSELECTED_COLOR)
         confirm_button.config(command=self.register_episode_positions)
         confirm_button.grid(row=row, column=column, columnspan=len(episode))
        
@@ -90,6 +97,5 @@ class Ui:
         self.window.destroy()
 
 
-
-if __name__ == "__main__":
-    gui = Ui("Fairytale S05 Ep 14")
+# if __name__ == "__main__":
+#     gui = Ui("Fairytale S05 Ep 14")

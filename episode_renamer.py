@@ -1,7 +1,6 @@
 
 import re
 
-from click import confirm
 from ui import Ui
 
 
@@ -69,5 +68,5 @@ for pattern in patterns:
             # the ui blocks the code at this point until it is destroyed
             
             pattern_positions.append(pattern_position)
-            print(f"Pattern positions: {pattern_position}")
+            print(f"Pattern positions: {pattern_positions}")
             break
