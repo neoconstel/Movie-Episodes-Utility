@@ -1,10 +1,17 @@
 import tkinter
 
-unselected_color = "grey"
-selected_color = "green"
+UNSELECTED_COLOR = "grey"
+SELECTED_COLOR = "green"
+
+
 
 class Ui:
-    def __init__(self, episode:str):
+    output_positions = None
+
+    def __init__(self, episode:str, gui_output:list):
+        global output_positions
+        output_positions = gui_output
+
         row = column = 0
 
         # main UI
@@ -31,7 +38,7 @@ class Ui:
                 self.number_buttons.append(number_button)
 
 
-                number_button.config(text=character, font=("Arial", 9, "bold"), bg=unselected_color, fg="cyan")
+                number_button.config(text=character, font=("Arial", 9, "bold"), bg=UNSELECTED_COLOR, fg="cyan")
                 number_button.grid(row=row, column=column)
             else:
                 character_label = tkinter.Label()
@@ -47,17 +54,19 @@ class Ui:
         row += 1
 
         confirm_button = tkinter.Button()
-        confirm_button.config(text="Confirm", font=("Arial", 9, "bold"), bg=unselected_color)
-        confirm_button.grid(row=row, column=column, columnspan=len(episode))        
+        confirm_button.config(text="Confirm", font=("Arial", 9, "bold"), bg=UNSELECTED_COLOR)
+        confirm_button.config(command=self.register_episode_positions)
+        confirm_button.grid(row=row, column=column, columnspan=len(episode))
+       
 
         # button functions -- decorated to target each button separately
         for i, btn in enumerate(self.number_buttons):
             def action(index=i):
                 def color_toggle():
-                    if self.number_buttons[index]["bg"] == unselected_color:
-                        self.number_buttons[index].config(bg=selected_color)
+                    if self.number_buttons[index]["bg"] == UNSELECTED_COLOR:
+                        self.number_buttons[index].config(bg=SELECTED_COLOR)
                     else:
-                        self.number_buttons[index].config(bg=unselected_color)
+                        self.number_buttons[index].config(bg=UNSELECTED_COLOR)
                 return color_toggle
 
             self.number_buttons[i].config(command=action(i))
@@ -65,6 +74,20 @@ class Ui:
 
         # keep UI active
         self.window.mainloop()
+
+
+    def register_episode_positions(self):
+        global output_positions
+
+        positions = []
+        for index, btn in enumerate(self.number_buttons):
+            if btn['bg'] == SELECTED_COLOR:
+                positions.append(index)
+
+        output_positions.extend(positions)
+
+        # close the ui
+        self.window.destroy()
 
 
 

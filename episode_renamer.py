@@ -1,5 +1,7 @@
 
 import re
+
+from click import confirm
 from ui import Ui
 
 
@@ -21,8 +23,6 @@ def get_episode_positions():
 
 # print(get_episode_positions())
 # exit()
-
-gui = Ui()
         
 
 episodes = [
@@ -63,7 +63,11 @@ for pattern in patterns:
         match = re.match(pattern, episode)
         if match:
             print(f"Sample: {match.group()},  Numbers: {match.groups()}")
-            pattern_position = get_episode_positions()
-            pattern_positions.append(pattern_positions)
+            # pattern_position = get_episode_positions()
+            pattern_position = []
+            gui = Ui(episode, gui_output=pattern_position)
+            # the ui blocks the code at this point until it is destroyed
+            
+            pattern_positions.append(pattern_position)
             print(f"Pattern positions: {pattern_position}")
             break
