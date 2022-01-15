@@ -7,7 +7,7 @@ SELECTED_COLOR = "green"
 class EpisodeParseUi:
     output_positions = None
 
-    def __init__(self, episode:str, gui_output:list):
+    def __init__(self, episode:str, pattern_count:int, total_patterns:int, gui_output:list):
         global output_positions
         output_positions = gui_output
 
@@ -19,6 +19,7 @@ class EpisodeParseUi:
         self.window.resizable(0, 0)  # disable resizing of window
         self.window.config(padx=30, pady=30)
 
+
         info_label = tkinter.Label()
         info_label.config(
             text="Select ONLY the buttons corresponding to the episodes", 
@@ -26,9 +27,18 @@ class EpisodeParseUi:
         info_label.grid(row=row, column=column, columnspan=len(episode))
         row += 1
 
-        gap_label = tkinter.Label()
-        gap_label.config(text=" ", font=("Arial", 9, "bold"))
-        gap_label.grid(row=row, column=column, columnspan=len(episode))
+        # create a gap in the grid using empty element
+        tkinter.Label().grid(row=row, column=column)
+        row += 1
+
+        pattern_count_label = tkinter.Label()
+        pattern_count_label.config(
+            text=f"Naming pattern {pattern_count} of {total_patterns} patterns", 
+            font=("Arial", 9, "bold"))
+        pattern_count_label.grid(
+            row=row, 
+            column=column, 
+            columnspan=len(episode))
         row += 1
 
         self.number_buttons = []
@@ -53,9 +63,8 @@ class EpisodeParseUi:
         row += 1
         column = 0
 
-        gap_label = tkinter.Label()
-        gap_label.config(text=" ", font=("Arial", 9, "bold"))
-        gap_label.grid(row=row, column=column, columnspan=len(episode))
+        # empty element to fill the grid
+        tkinter.Label().grid(row=row, column=column)
         row += 1
 
         confirm_button = tkinter.Button()

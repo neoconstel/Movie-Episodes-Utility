@@ -119,7 +119,15 @@ def unrename_episodes():
     
     # do the actual unrenaming
     for old_name, new_name in rename_map.items():
-        os.rename(new_name, old_name)
+        try:
+            os.rename(new_name, old_name)
+        except:
+            if not os.path.exists(new_name):
+                print(f"could not rename {new_name} to {old_name} because \
+                the file: {new_name} not found")
+            else:
+                print(f"could not rename {new_name} to {old_name} for unknown \
+                    reason")
 
     # delete the log_file since renaming has been reversed
     os.remove(log_file)
