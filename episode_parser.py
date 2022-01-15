@@ -1,6 +1,6 @@
 
 import re
-from episodeparse_ui import EpisodeParseUi   
+from episode_parser_ui import EpisodeParseUi   
 
 def parse_episodes(episodes) -> list:
     

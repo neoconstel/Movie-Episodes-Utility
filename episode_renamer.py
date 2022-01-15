@@ -126,6 +126,6 @@ def unrename_episodes():
 if __name__ == "__main__":
     # only one of these should be active at a time
 
-    # rename_episodes(desired_title="FairyFox")
+    # rename_episodes(desired_title="FairyTail")
     # unrename_episodes()
     pass
