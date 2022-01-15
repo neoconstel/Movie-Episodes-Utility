@@ -121,11 +121,4 @@ def unrename_episodes():
 
     # delete the log_file since renaming has been reversed
     os.remove(log_file)
-
-
-if __name__ == "__main__":
-    # only one of these should be active at a time
-
-    # rename_episodes(desired_title="FairyTail")
-    # unrename_episodes()
-    pass
+    
