@@ -1,15 +1,19 @@
 
+
 import episode_parser
 import re
+import os
 
-episodes_directory = ""
+episodes_directory = os.getcwd()
 
 video_formats = [
 	'mp4','avi','mov','3gp','vob','rmvb','wmv','flv','swf','webm','mkv'
 ]
 
 def get_video_extension(filename:str):
-    dot_extension = filename[filename.rindex("."):] # e.g .mp4
+    dot_extension = filename[filename.rfind("."):] # e.g .mp4
+    if dot_extension == -1:
+        return None
     extension = dot_extension[1:] # e.g mp4
     if extension in video_formats:
         return dot_extension
@@ -17,15 +21,28 @@ def get_video_extension(filename:str):
 
 # get all the filenames to give something like this 
 # (taking only files with video formats -- recognized by file extension)
-episodes = {
-    "fairytale 0101.mp4": None,
-    "fairytale 0102.rmvb": None,
-    "fairytale 0103.mp4": None,
-    "fairytale s01ep04.mp4": None,
-    "fairytale s01ep17.mp4": None
-}
+# episodes = {
+#     "fairytale 011.mp4": None,
+#     "fairytale 0101.mp4": None,
+#     "fairytale 0102.rmvb": None,
+#     "fairytale 0103.mp4": None,
+#     "fairytale s01ep04.mp4": None,
+#     "fairytale s01ep17.mp4": None
+# }
 
-# renaming_map = {}
+episodes = {}
+for dirpath, dirnames, filenames in os.walk(episodes_directory):
+    for filename in filenames:
+        full_path = os.path.join(dirpath, filename)
+        # only files in the episodes_directory, not in any sub-directory
+        if full_path == os.path.join(episodes_directory, filename):            
+            path_video_extension = get_video_extension(full_path)
+            # only video formats
+            if path_video_extension:
+                print(f"Adding file '{filename}' as episode from path: {full_path}")
+                # add the video filename into the episodes dictionary
+                episodes[filename] = None
+
 
 desired_title = "FairyTail"
 
@@ -37,10 +54,18 @@ for pattern, pattern_positions in result:
         if match:
             new_title = f"{desired_title} - "
             video_extension = get_video_extension(episode)
+            episode_digits = ""
 
+            # get the episode digits
             for position in pattern_positions:
                 episode_digit = match.group(position + 1)
-                new_title += episode_digit
+                episode_digits += episode_digit
+                
+            # 1 will become 01, 9 will become 09 etc
+            if int(episode_digits) < 10 and not episode_digits.startswith("0"):  
+                episode_digits = f"0{episode_digits}"
+            
+            new_title += episode_digits
 
             # add the extension to the filename
             new_title += video_extension
