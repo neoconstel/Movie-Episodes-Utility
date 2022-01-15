@@ -37,7 +37,8 @@ def rename_episodes(desired_title):
                 path_video_extension = get_video_extension(full_path)
                 # only video formats
                 if path_video_extension:
-                    print(f"Adding file '{filename}' as episode from path: {full_path}")
+                    print(f"Adding file '{filename}' as episode \
+                                        from path: {full_path}")
                     # add the video filename into the episodes dictionary
                     episodes[filename] = None
 
@@ -57,7 +58,8 @@ def rename_episodes(desired_title):
                     episode_digits += episode_digit
                     
                 # 1 will become 01, 9 will become 09 etc
-                if int(episode_digits) < 10 and not episode_digits.startswith("0"):  
+                if int(episode_digits) < 10 \
+                                    and not episode_digits.startswith("0"):  
                     episode_digits = f"0{episode_digits}"
                 
                 new_title += episode_digits
@@ -89,7 +91,7 @@ def rename_episodes(desired_title):
     print(f"\nNumber of original episodes: {len(episodes)}")
     # total elements in values - number of null values
     num_renamed_episodes = len(episodes.values()) \
-                                - sum(1 for v in episodes.values() if v == None)
+                            - sum(1 for v in episodes.values() if v == None)
     print(f"Number of renamed episodes: {num_renamed_episodes}")
 
     if len(episodes) != num_renamed_episodes:
@@ -121,4 +123,3 @@ def unrename_episodes():
 
     # delete the log_file since renaming has been reversed
     os.remove(log_file)
-    

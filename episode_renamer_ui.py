@@ -1,4 +1,4 @@
-from curses import window
+
 import tkinter
 import os
 import episode_renamer
@@ -14,13 +14,19 @@ class EpisodeRenamerUi():
         self.window.config(padx=50, pady=50)
 
         self.episode_title_label = tkinter.Label()
-        self.episode_title_label.config(text="Episode Renamer", font=("Arial", 15, "bold"))
+        self.episode_title_label.config(
+            text="Episode Renamer", 
+            font=("Arial", 15, "bold")
+            )
         self.episode_title_label.config(pady=10)
         self.episode_title_label.grid(row=row, column=column, columnspan=3)
         row += 1
 
         self.episode_title_label = tkinter.Label()
-        self.episode_title_label.config(text="Desired Title", font=("Arial", 9, "bold"))        
+        self.episode_title_label.config(
+            text="Desired Title",
+            font=("Arial", 9, "bold")
+        )        
         self.episode_title_label.grid(row=row, column=column, columnspan=3)
         row += 1
 
