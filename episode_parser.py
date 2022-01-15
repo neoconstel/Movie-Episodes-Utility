@@ -38,6 +38,10 @@ def parse_episodes(episodes) -> list:
                 gui = EpisodeParseUi(episode, pattern_count=pattern_index + 1, total_patterns=len(patterns), gui_output=pattern_positions)
                 # the ui blocks the code at this point until it is destroyed
                 
+                # abort if there is a willful termination or mistake
+                if not pattern_positions:
+                    exit()
+
                 all_pattern_positions.append(pattern_positions)
                 print(f"All pattern positions: {all_pattern_positions}")
                 break
