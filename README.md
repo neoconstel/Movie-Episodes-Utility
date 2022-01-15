@@ -15,6 +15,7 @@ why the missing episodes functionality is here to help.
 
 ### Features Implemented
 - Episode Renaming
+- Missing Episodes
 
 ### Work in Progress
-- Missing Episodes
+- Missing Episodes GUI

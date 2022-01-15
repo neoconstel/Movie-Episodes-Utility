@@ -10,11 +10,13 @@ episodes_directory = os.getcwd()
 log_file = "rename_log.json"
 
 
-def get_rename_map(desired_title) -> dict:
+def get_rename_map(desired_title, output="default"):
 
     # get all the filenames,
     # (taking only files with video formats -- recognized by file extension)
     episodes = {}
+    all_episode_digits = []
+
     for dirpath, dirnames, filenames in os.walk(episodes_directory):
         for filename in filenames:
             full_path = os.path.join(dirpath, filename)
@@ -46,7 +48,7 @@ def get_rename_map(desired_title) -> dict:
                 # 1 will become 01, 9 will become 09 etc
                 if int(episode_digits) < 10 \
                                     and not episode_digits.startswith("0"):  
-                    episode_digits = f"0{episode_digits}"
+                    episode_digits = f"0{episode_digits}"                    
                 
                 new_title += episode_digits
 
@@ -59,9 +61,13 @@ def get_rename_map(desired_title) -> dict:
                 #     renamed_episodes.append(new_title)
                 if new_title not in episodes.values():
                     episodes[episode] = new_title
+                    all_episode_digits.append(episode_digits)
                 print(new_title)
         print(f"Pattern: {pattern},  Positions: {pattern_positions}")
-    return episodes
+    if output == "episode-digits":
+        return all_episode_digits
+    else:
+        return episodes  # default behaviour
 
 
 def rename_episodes(desired_title, log_file=log_file):
