@@ -10,8 +10,7 @@ episodes_directory = os.getcwd()
 log_file = "rename_log.json"
 
 
-def rename_episodes(desired_title):
-    global log_file
+def get_rename_map(desired_title) -> dict:
 
     # get all the filenames,
     # (taking only files with video formats -- recognized by file extension)
@@ -62,11 +61,11 @@ def rename_episodes(desired_title):
                     episodes[episode] = new_title
                 print(new_title)
         print(f"Pattern: {pattern},  Positions: {pattern_positions}")
+    return episodes
 
 
-    # print("\n\nRenamed episodes:")
-    # for each in episodes.values():
-    #     print(each)
+def rename_episodes(desired_title, log_file=log_file):
+    episodes = get_rename_map(desired_title)
 
     print("\n\n----Expected Renaming Result----")
     for episode, new_name in episodes.items():
@@ -94,9 +93,7 @@ def rename_episodes(desired_title):
             json.dump(episodes, log)
 
 
-def unrename_episodes():
-    global log_file
-
+def unrename_episodes(log_file=log_file):
     if not os.path.exists(log_file):
         print("No record of previous renaming found")
         return
