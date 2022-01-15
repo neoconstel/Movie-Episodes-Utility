@@ -12,3 +12,4 @@ TODO
 *.mkv
 rename_log.json
 __pycache__
+__pycache__/*
