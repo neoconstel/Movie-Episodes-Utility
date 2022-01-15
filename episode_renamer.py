@@ -101,3 +101,6 @@ if len(episodes) != num_renamed_episodes:
 else:
     print("No renaming conflicts. Renaming can safely proceed")
     # proceed to carry out actual renaming of files
+    print("\n\n")
+    for episode, new_name in episodes.items():
+        os.rename(episode, new_name)
