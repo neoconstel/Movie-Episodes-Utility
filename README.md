@@ -41,4 +41,4 @@ from there.
 #### Windows
 Currently there is no installation made for windows. I intend to, but if 
 anyone is in immediate need of it kindly reach out to me and I'll make it a 
-priority. Thanks!
+priority. Thanks, and happy watching!😀
