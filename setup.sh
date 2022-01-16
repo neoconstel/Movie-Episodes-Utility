@@ -13,6 +13,7 @@ sudo mkdir $APP_DIR/$APP
 sudo mv $APP.pyz $APP_DIR/$APP
 
 sudo cp uninstall.sh $APP_DIR/$APP
+sudo cp manual $APP_DIR/$APP
 
 export APP_ENTRY=episode-utility
 sudo touch $APP_ENTRY
@@ -20,7 +21,9 @@ sudo chmod 777 $APP_ENTRY
 sudo echo "#!/bin/bash
 if [ \"\$1\" == \"--uninstall\" ]; then
 	sudo $APP_DIR/$APP/uninstall.sh
-else
+elif [ \"\$1\" == \"--help\" ]; then
+	less $APP_DIR/$APP/manual
+elif [ \$# == 0 ]; then
 	python3 $APP_DIR/$APP/$APP.pyz
 fi" > $APP_ENTRY
 export APP_ENTRY_DIR="/usr/bin"
