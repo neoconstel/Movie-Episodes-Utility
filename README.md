@@ -12,11 +12,10 @@ some are missing. How do you quickly know which ones are missing so you can
 decide to make a suitable resolution to the problem immediately? Well, that's 
 why the missing episodes functionality is here to help.
 
-## Requirements to Launch
-- Just have python (3.6+) installed. No extra modules/packages are needed.
-
-
-### Features Implemented
+## Features Implemented
 - Episode Renaming
 - Missing Episodes Reporting
 - GUI Interface
+
+## Requirements to Launch
+- Just have python (3.6+) installed. No extra modules/packages are needed.
