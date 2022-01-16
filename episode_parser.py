@@ -46,3 +46,4 @@ def parse_episodes(episodes) -> list:
                 print(f"All pattern positions: {all_pattern_positions}")
                 break
     return list(zip(patterns, all_pattern_positions))
+    

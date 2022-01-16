@@ -10,3 +10,4 @@ def get_video_extension(filename:str):
     if extension in video_formats:
         return dot_extension
     return None
+    
