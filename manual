@@ -1,4 +1,11 @@
-This utility helps with automated renaming of any number of movie episodes within a directory to a standard naming format. Also has functionality for obtaining a quick record of missing episodes. In running from a terminal, it should be ran from the directory containing the movie episodes which the user desires to operate on.
+This utility helps with automated renaming of any number of movie episodes 
+within a directory to a standard naming format. Also has functionality for 
+obtaining a quick record of missing episodes. In running from a terminal, it 
+should be ran from the directory containing the movie episodes which the user 
+desires to operate on. For instance if your Samurai-X episodes are in 
+the directory: /home/zoro/anime/samurai-x, you should navigate to 
+/home/zoro/anime/samurai-x in your terminal and run "episode-utility" 
+from there.
 
 syntax:	episode-utility [command]
 example:	to launch the help manual, run:	episode-utility --help

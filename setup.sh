@@ -25,6 +25,8 @@ elif [ \"\$1\" == \"--help\" ]; then
 	less $APP_DIR/$APP/manual
 elif [ \$# == 0 ]; then
 	python3 $APP_DIR/$APP/$APP.pyz
+else
+	echo Invalid command. Run \\\"$APP_ENTRY --help\\\" to view the manual
 fi" > $APP_ENTRY
 export APP_ENTRY_DIR="/usr/bin"
 sudo mv $APP_ENTRY $APP_ENTRY_DIR
