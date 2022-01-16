@@ -19,5 +19,5 @@ sudo echo "#!/bin/bash" > $APP_ENTRY
 sudo echo "python3 $APP_DIR/$APP/$APP.pyz" >> $APP_ENTRY
 export APP_ENTRY_DIR="/usr/bin"
 sudo mv $APP_ENTRY $APP_ENTRY_DIR
-echo movie episode utility successfully installed. Run $APP_ENTRY from terminal to launch.
+echo movie episode utility successfully installed. Run \"$APP_ENTRY\" from terminal to launch.
 
