@@ -13,7 +13,7 @@ decide to make a suitable resolution to the problem immediately? Well, that's
 why the missing episodes functionality is here to help.
 
 ## Requirements to Launch
-- Just have python (3.8+) installed. No extra modules/packages are needed.
+- Just have python (3.6+) installed. No extra modules/packages are needed.
 
 
 ### Features Implemented
