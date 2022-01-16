@@ -2,6 +2,7 @@
 import tkinter
 from episode_renamer_ui import EpisodeRenamerUi
 from missing_episodes_scanner import report_missing_episodes
+import os
 
 
 class MainUi():
@@ -42,6 +43,12 @@ class MainUi():
         self.missing_launch_btn.grid(row=row, column=column)
         row += 1
         column = 0
+
+        self.path_label = tkinter.Label()
+        path_info = f"Path: {os.getcwd()}"
+        self.path_label.config(text=path_info, font=("Arial", 8, "bold"))
+        self.path_label.config(pady=10)
+        self.path_label.grid(row=row, column=column, columnspan=3)
 
 
 
