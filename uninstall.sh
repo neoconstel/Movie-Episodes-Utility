@@ -1,5 +1,5 @@
 sudo echo
-echo installing movie episode utility
+echo uninstalling movie episode utility
 
 export APP=movie-episode-utility
 export APP_DIR="/usr/share"

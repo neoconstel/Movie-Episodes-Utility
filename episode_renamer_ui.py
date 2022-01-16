@@ -57,7 +57,10 @@ class EpisodeRenamerUi():
         column = 0
 
         self.path_label = tkinter.Label()
-        path_info = f"Path: {os.getcwd()}"
+        working_dir = os.getcwd()
+        path_info = f"Path: {working_dir}"
+        if len(working_dir) > 50:
+            path_info = f"Path: ...{working_dir[-50:]}"
         self.path_label.config(text=path_info, font=("Arial", 8, "bold"))
         self.path_label.config(pady=10)
         self.path_label.grid(row=row, column=column, columnspan=3)
