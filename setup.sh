@@ -1,7 +1,7 @@
 sudo echo
 echo installing movie episode utility
 
-export APP=episode-utility
+export APP=movie-episode-utility
 sudo mkdir $APP
 sudo cp *.py $APP
 sudo python3 -m zipapp $APP

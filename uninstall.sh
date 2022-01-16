@@ -1,7 +1,7 @@
 sudo echo
 echo installing movie episode utility
 
-export APP=episode-utility
+export APP=movie-episode-utility
 export APP_DIR="/usr/share"
 sudo rm -r "$APP_DIR/$APP"
 
