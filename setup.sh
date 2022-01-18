@@ -14,6 +14,7 @@ sudo mv $APP.pyz $APP_DIR/$APP
 
 sudo cp uninstall.sh $APP_DIR/$APP
 sudo cp manual $APP_DIR/$APP
+sudo cp example.png $APP_DIR/$APP
 
 export APP_ENTRY=episode-utility
 sudo touch $APP_ENTRY

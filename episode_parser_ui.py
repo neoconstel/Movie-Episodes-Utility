@@ -1,8 +1,11 @@
 import tkinter
+import os
 
 UNSELECTED_COLOR = "grey"
 SELECTED_COLOR = "green"
 
+PROGRAM_DIR = os.path.dirname(
+                            os.path.dirname(os.path.realpath(__file__)))
 
 class EpisodeParseUi:
     output_positions = None
@@ -25,6 +28,14 @@ class EpisodeParseUi:
             text="Select ONLY the buttons corresponding to the episodes", 
             font=("Arial", 9, "bold"))
         info_label.grid(row=row, column=column, columnspan=len(episode))
+        row += 1
+
+        # Add example image
+        # 355 x 17 (image dimensions)
+        example_img_raw = tkinter.PhotoImage(file=f"{PROGRAM_DIR}/example.png")
+        canvas = tkinter.Canvas(width=355, height=17)
+        example_image = canvas.create_image(177, 8, image=example_img_raw)
+        canvas.grid(row=row, column=column, columnspan=len(episode))
         row += 1
 
         # create a gap in the grid using empty element
@@ -104,4 +115,3 @@ class EpisodeParseUi:
 
         # close the ui
         self.window.destroy()
-        
