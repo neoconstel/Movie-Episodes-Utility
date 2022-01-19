@@ -1,19 +1,28 @@
 
 import re
+
+from click import pass_context
 from episode_parser_ui import EpisodeParseUi   
 
 def parse_episodes(episodes) -> list:
-    
+    '''episodes: collection of strings, where each string is a single filename 
+    for an episode
+    '''
+
     patterns = []
 
+    # episode is a single filename in string form e.g "Samurai-X Ep 17.mp4"
     for episode in episodes:
         regex = ""
 
-        for c in episode:
-            if c.isdigit():
+        for character in episode:
+            if character.isdigit():
                 regex += "(\d)"
             else:
-                regex += "\D"
+                if regex.endswith("\D+"):
+                    pass
+                else:
+                    regex += "\D+"
 
         if regex not in patterns:
             patterns.append(regex)
