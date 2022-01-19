@@ -26,15 +26,15 @@ class EpisodeParseUi:
         info_label = tkinter.Label()
         info_label.config(
             text="Select ONLY the buttons corresponding to the episodes", 
-            font=("Arial", 9, "bold"))
+            font=("Arial", 12, "bold"))
         info_label.grid(row=row, column=column, columnspan=len(episode))
         row += 1
 
         # Add example image
-        # 355 x 17 (image dimensions)
+        # 248 x 26 (image dimensions)
         example_img_raw = tkinter.PhotoImage(file=f"{PROGRAM_DIR}/example.png")
-        canvas = tkinter.Canvas(width=355, height=17)
-        example_image = canvas.create_image(177, 8, image=example_img_raw)
+        canvas = tkinter.Canvas(width=248, height=26)
+        example_image = canvas.create_image(124, 13, image=example_img_raw)
         canvas.grid(row=row, column=column, columnspan=len(episode))
         row += 1
 
