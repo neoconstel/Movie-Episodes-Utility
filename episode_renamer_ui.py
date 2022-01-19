@@ -55,6 +55,11 @@ class EpisodeRenamerUi():
         self.unrename_btn.grid(row=row, column=column)
         row += 1
         column = 0
+        # set unrename btn state based on presence/absence of rename history
+        if not os.path.exists(episode_renamer.log_file):
+            self.unrename_btn.config(state="disabled")
+        else:
+            self.unrename_btn.config(state="normal")
 
         self.path_label = tkinter.Label()
         working_dir = os.getcwd()
