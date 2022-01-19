@@ -94,9 +94,19 @@ def rename_episodes(desired_title, log_file=log_file):
         for episode, new_name in episodes.items():
             os.rename(episode, new_name)
 
-        # keep a record mapping each old name to its new name
+        # keep a history of renaming operations
+
+        log_history = []  # holds episode dictionaries of old:new name pairs
+
+        # first get the current renaming history
+        if os.path.exists(log_file):
+            with open(log_file) as log:
+                log_history = json.load(log)
+
+        # add this renaming operation to rename history
         with open(log_file, "w") as log:
-            json.dump(episodes, log)
+            log_history.append(episodes)
+            json.dump(log_history, log)
 
 
 def unrename_episodes(log_file=log_file):
@@ -105,7 +115,8 @@ def unrename_episodes(log_file=log_file):
         return
 
     with open(log_file) as log:
-        rename_map = json.load(log)
+        log_history = json.load(log)
+        rename_map = log_history.pop()
     
     # do the actual unrenaming
     for old_name, new_name in rename_map.items():
@@ -119,6 +130,10 @@ def unrename_episodes(log_file=log_file):
                 print(f"could not rename {new_name} to {old_name} for unknown \
                     reason")
 
-    # delete the log_file since renaming has been reversed
-    os.remove(log_file)
+    # update log file if rename history is non-empty, else delete log file
+    if log_history:
+        with open(log_file, "w") as log:
+            json.dump(log_history, log)
+    else:
+        os.remove(log_file)
     
