@@ -1,4 +1,5 @@
 
+from distutils import extension
 import re
 
 from click import pass_context
@@ -13,9 +14,10 @@ def parse_episodes(episodes) -> list:
 
     # episode is a single filename in string form e.g "Samurai-X Ep 17.mp4"
     for episode in episodes:
+        extension_index = episode.rindex(".")
         regex = ""
 
-        for character in episode:
+        for index, character in enumerate(episode):
             if character.isdigit():
                 regex += "(\d)"
             else:
@@ -23,6 +25,9 @@ def parse_episodes(episodes) -> list:
                     pass
                 else:
                     regex += "\D+"
+            
+            if index == extension_index:
+                break
 
         if regex not in patterns:
             patterns.append(regex)

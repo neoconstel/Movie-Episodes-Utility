@@ -54,8 +54,9 @@ class EpisodeParseUi:
 
         self.number_buttons = []
 
-        for character in episode:
-            if character.isdigit():
+        extension_index = episode.rindex(".")
+        for index, character in enumerate(episode):
+            if character.isdigit() and index < extension_index:
                 number_button = tkinter.Button()
                 self.number_buttons.append(number_button)
 
