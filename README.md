@@ -17,10 +17,10 @@ currently eating at before heading back home?
 Well, that's why the missing episodes functionality is here to help.
 
 ## Features Implemented
-- Episode Renaming (includes support for undoing the previous renaming 
-performed within the specified directory)
+- Episodes Renaming
 - Missing Episodes Reporting
 - GUI Interface
+- Infinite rename/undo-rename history
 
 ## Requirements to Launch
 - Just have python (3.6+) installed. No extra modules/packages are needed.
