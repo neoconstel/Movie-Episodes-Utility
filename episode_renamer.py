@@ -30,6 +30,18 @@ def get_rename_map(desired_title, output="default"):
                     # add the video filename into the episodes dictionary
                     episodes[filename] = None
 
+    # for temporary renaming due to problem filenames------
+    pre_episodes = {}
+
+    episodes_keys = [key for key in episodes.keys()]
+    for episode in episodes_keys:
+        if " -" in episode:
+            refined_episode = episode.replace(" -", "--")
+            pre_episodes[episode] = refined_episode
+            episodes[refined_episode] = episodes.pop(episode)
+            print(f"Temporary renaming {episode} to {refined_episode}")
+    #----------------end temporary naming-------------------
+
     result = episode_parser.parse_episodes(episodes=episodes.keys())
     print("\n\n")
     for pattern, pattern_positions in result:
@@ -67,11 +79,17 @@ def get_rename_map(desired_title, output="default"):
     if output == "episode-digits":
         return all_episode_digits
     else:
-        return episodes  # default behaviour
+        return episodes, pre_episodes  # default behaviour
 
 
 def rename_episodes(desired_title, log_file=log_file):
-    episodes = get_rename_map(desired_title)
+    episode_pack = get_rename_map(desired_title)
+    episodes = episode_pack[0]
+    pre_episodes = episode_pack[1]
+
+    # replace episodes with the original episode names from pre-naming stage
+    for pre_episode, episode in pre_episodes.items():
+        episodes[pre_episode] = episodes.pop(episode)
 
     print("\n\n----Expected Renaming Result----")
     for episode, new_name in episodes.items():
